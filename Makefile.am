@@ -6,8 +6,7 @@ EXTRA_DIST = \
 	LICENSE \
 	src \
 	tests \
-	docs \
-	Makefile
+	docs
 
 check-local:
 	$(AM_V_at)cd $(top_srcdir) && $(PYTHON) -m pytest
