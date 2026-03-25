@@ -1,11 +1,17 @@
 AC_PREREQ([2.69])
 m4_define([MVT_VERSION], m4_normalize(m4_esyscmd([
-python - <<'EOF'
+python3 - <<'EOF'
 from pathlib import Path
 import re
 
-text = Path("src/mvt/common/version.py").read_text()
-match = re.search(r'MVT_VERSION\s*=\s*"([^"]+)"', text)
+version_file = Path("src/mvt/common/version.py")
+if not version_file.exists():
+    raise SystemExit("Error: src/mvt/common/version.py not found")
+
+match = re.search(r'MVT_VERSION\s*=\s*"([^"]+)"', version_file.read_text())
+if not match:
+    raise SystemExit("Error: Could not extract MVT_VERSION from src/mvt/common/version.py")
+
 print(match.group(1))
 EOF
 ])))
