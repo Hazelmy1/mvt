@@ -13,7 +13,7 @@ def main() -> int:
         return 1
 
     match = re.search(
-        r"MVT_VERSION\s*=\s*(['\"])([^'\"]+)\1",
+        r"MVT_VERSION\s*=\s*(['\"])(.*?)\1",
         version_path.read_text(encoding="utf-8"),
     )
     if not match:

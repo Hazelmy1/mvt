@@ -10,7 +10,7 @@ def main() -> int:
     project_root = Path(__file__).resolve().parent.parent
     config_path = project_root / "pyproject.toml"
     if not config_path.exists():
-        sys.stderr.write("Error: pyproject.toml not found in project root.\n")
+        sys.stderr.write(f"Error: {config_path} not found in project root.\n")
         return 1
 
     if importlib.util.find_spec("pytest") is None:
