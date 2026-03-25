@@ -139,3 +139,20 @@ dmypy.json
 
 # Sublime Text project files
 *.sublime*
+
+# Autotools generated files
+Makefile.in
+Makefile
+aclocal.m4
+autom4te.cache/
+config.h
+config.h.in
+config.log
+config.status
+configure
+compile
+depcomp
+install-sh
+missing
+.deps/
+.dirstamp
