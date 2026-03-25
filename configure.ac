@@ -1,5 +1,9 @@
 AC_PREREQ([2.69])
 m4_define([MVT_VERSION], m4_normalize(m4_esyscmd([
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "Error: python3 is required to extract MVT_VERSION" >&2
+  exit 1
+fi
 python3 - <<'EOF'
 from pathlib import Path
 import re
