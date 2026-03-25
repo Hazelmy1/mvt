@@ -5,16 +5,19 @@ if ! command -v python3 >/dev/null 2>&1; then
   exit 1
 fi
 python3 - <<'EOF'
+import sys
 from pathlib import Path
 import re
 
 version_file = Path("src/mvt/common/version.py")
 if not version_file.exists():
-    raise SystemExit("Error: src/mvt/common/version.py not found")
+    sys.stderr.write("Error: src/mvt/common/version.py not found\n")
+    raise SystemExit(1)
 
 match = re.search(r'MVT_VERSION\s*=\s*"([^"]+)"', version_file.read_text())
 if not match:
-    raise SystemExit("Error: Could not extract MVT_VERSION from src/mvt/common/version.py")
+    sys.stderr.write("Error: Could not extract MVT_VERSION from src/mvt/common/version.py\n")
+    raise SystemExit(1)
 
 print(match.group(1))
 EOF
