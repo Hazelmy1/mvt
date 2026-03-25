@@ -4,6 +4,7 @@ EXTRA_DIST = \
 	pyproject.toml \
 	README.md \
 	LICENSE \
+	scripts/extract_version.py \
 	scripts/check_test_prereqs.py \
 	src \
 	tests \
