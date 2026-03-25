@@ -14,7 +14,7 @@ if not version_file.exists():
     sys.stderr.write("Error: src/mvt/common/version.py not found\n")
     raise SystemExit(1)
 
-match = re.search(r'MVT_VERSION\s*=\s*"([^"]+)"', version_file.read_text())
+match = re.search(r'MVT_VERSION\s*=\s*"([^"]+)"', version_file.read_text(encoding="utf-8"))
 if not match:
     sys.stderr.write("Error: Could not extract MVT_VERSION from src/mvt/common/version.py\n")
     raise SystemExit(1)
