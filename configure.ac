@@ -1,9 +1,5 @@
 AC_PREREQ([2.69])
 m4_define([MVT_VERSION], m4_normalize(m4_esyscmd([
-if ! command -v python3 >/dev/null 2>&1; then
-  echo "Error: python3 is required to extract MVT_VERSION" >&2
-  exit 1
-fi
 python3 - <<'EOF'
 import sys
 from pathlib import Path
@@ -14,7 +10,7 @@ if not version_file.exists():
     sys.stderr.write("Error: src/mvt/common/version.py not found\n")
     raise SystemExit(1)
 
-match = re.search(r'MVT_VERSION\s*=\s*"([^"]+)"', version_file.read_text(encoding="utf-8"))
+match = re.search(r'MVT_VERSION\s*=\s*[\'"]([^\'"]+)[\'"]', version_file.read_text(encoding="utf-8"))
 if not match:
     sys.stderr.write("Error: Could not extract MVT_VERSION from src/mvt/common/version.py\n")
     raise SystemExit(1)

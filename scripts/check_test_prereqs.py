@@ -14,7 +14,10 @@ def main() -> int:
         return 1
 
     if importlib.util.find_spec("pytest") is None:
-        sys.stderr.write("Error: pytest is not installed. Install dev requirements first.\n")
+        sys.stderr.write(
+            "Error: pytest is not installed. Install dev requirements first "
+            "(e.g., run `make test-requirements`).\n"
+        )
         return 1
 
     return 0
