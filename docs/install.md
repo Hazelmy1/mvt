@@ -1,6 +1,6 @@
 # Installation
 
-Before proceeding, please note that MVT requires Python 3.6+ to run. While it should be available on most operating systems, please make sure of that before proceeding.
+Before proceeding, please note that MVT requires Python 3.10+ to run. While it should be available on most operating systems, please make sure of that before proceeding.
 
 ## Dependencies on Linux
 
@@ -98,6 +98,18 @@ You now should have the `mvt-ios` and `mvt-android` utilities installed.
 **Notes:**
 1. The `--force` flag is necessary to force the reinstallation of the package.
 2. To revert to using a PyPI version, it will be necessary to `pipx uninstall mvt` first.
+
+### Installing from source with autotools
+
+If you have checked out the source code and want to install via the autotools build system, activate a virtual environment first (or ensure you have system-wide write access), then run:
+
+```bash
+./autogen.sh
+./configure
+make install
+```
+
+This will run `./autogen.sh` to generate the `configure` script, `./configure` to detect your Python 3.10+ interpreter, and `make install` to install the package into the active Python environment using `pip`.
 
 ## Setting up command completions
 
